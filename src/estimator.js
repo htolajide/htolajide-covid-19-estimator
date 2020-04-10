@@ -14,7 +14,12 @@ const infectionFactor = (periodType, number) => {
 };
 
 const covid19ImpactEstimator = (data = {}) => {
-  const { reportedCases, periodType, timeToElapse, totalHospitalBeds } = data;
+  const {
+    reportedCases,
+    periodType,
+    timeToElapse,
+    totalHospitalBeds
+  } = data;
   const impactCurrentlyInfected = getImpactCurrentlyInfected(reportedCases);
   const severeImpactCurrentlyInfected = getSevereImpactCurrentlyInfected(reportedCases);
   const impactInfecByReqTime = infectionFactor(periodType, timeToElapse) * impactCurrentlyInfected;
