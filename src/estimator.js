@@ -27,7 +27,7 @@ const covid19ImpactEstimator = (data = {}) => {
   const impactSevCasesByRequestedTime = impactInfecByReqTime * Math.floor(15 / 100);
   const sevSevCasesByReqTime = sevInfecByReq * Math.floor(15 / 100);
   const iHospitalBedsByReqTime = ((totalHospitalBeds * (35 / 100)) - impactSevCasesByRequestedTime);
-  const sHospitalBedsByReqTime = ((totalHospitalBeds * Math.floor(35 / 100)) - sevInfecByReq);
+  const sHospitalBedsByReqTime = ((totalHospitalBeds * Math.floor(35 / 100)) - sevSevCasesByReqTime);
   return {
     data: { data },
     impact: {
