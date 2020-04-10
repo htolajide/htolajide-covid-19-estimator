@@ -6,9 +6,9 @@ const infectionFactor = (periodType, number) => {
   if (periodTypeLower === 'days') {
     factor = 2 ** Math.floor(number / 3);
   } else if (periodTypeLower === 'weeks') {
-    factor = 2 ** Math.floor(number / 21);
+    factor = 2 ** Math.floor((number * 7) / 3);
   } else if (periodTypeLower === 'months') {
-    factor = 2 ** Math.floor(number / 90);
+    factor = 2 ** Math.floor((number * 30) / 3);
   }
   return factor;
 };
