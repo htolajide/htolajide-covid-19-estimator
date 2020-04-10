@@ -2,7 +2,7 @@ const getImpactCurrentlyInfected = (inputData) => inputData * 10;
 const getSevereImpactCurrentlyInfected = (inputData) => inputData * 50;
 const infectionFactor = (periodType, number) => {
   let factor = 0;
-  const periodTypeLower = periodType.toLower();
+  const periodTypeLower = periodType.toLowerCase();
   if (periodTypeLower === 'days') {
     factor = 2 ** (number / 3);
   } else if (periodTypeLower === 'weeks') {
