@@ -24,10 +24,10 @@ const covid19ImpactEstimator = (data = {}) => {
   const severeCI = getSevereImpactCurrentlyInfected(reportedCases);
   const impIBRT = infectionFactor(periodType, timeToElapse) * impactCI;
   const sevIBRT = infectionFactor(periodType, timeToElapse) * severeCI;
-  const impactSevCBRT = impIBRT;
-  const sevSevCBRT = sevIBRT;
-  const iHospitalBedByReqTime = totalHospitalBeds * impactSevCBRT;
-  const sHospitalBedByReqTime = totalHospitalBeds * sevSevCBRT;
+  const impactSevCBRT = Math.floor(impIBRT * 0.15);
+  const sevSevCBRT = Math.floor(sevIBRT * 0.15);
+  const iHospitalBedByReqTime = Math.floor(totalHospitalBeds * 0.35) - impactSevCBRT;
+  const sHospitalBedByReqTime = Math.floor(totalHospitalBeds * 0.35) - sevSevCBRT;
   return {
     data: { data },
     impact: {
