@@ -1,5 +1,7 @@
 const getImpactCurrentlyInfected = (inputData) => inputData * 10;
+
 const getSevereImpactCurrentlyInfected = (inputData) => inputData * 50;
+
 const infectionFactor = (periodType, number) => {
   let factor = 0;
   const periodTypeLower = periodType.toLowerCase();
@@ -11,6 +13,10 @@ const infectionFactor = (periodType, number) => {
     factor = 2 ** Math.floor((number * 30) / 3);
   }
   return factor;
+};
+const getWholeNumber = (number) => {
+  if (number > 0) return Math.floor(number);
+  return Math.ceil(number);
 };
 
 const covid19ImpactEstimator = (data = {}) => {
@@ -26,10 +32,12 @@ const covid19ImpactEstimator = (data = {}) => {
   const sevIBRT = infectionFactor(periodType, timeToElapse) * severeCI;
   const impactSevCBRT = Math.floor(impIBRT * 0.15);
   const sevSevCBRT = Math.floor(sevIBRT * 0.15);
-  const iHospitalBedByReqTime = (totalHospitalBeds * 0.35 - impactSevCBRT);
-  const sHospitalBedByReqTime = (totalHospitalBeds * 0.35 - sevSevCBRT);
+  const iHospitalBedByReqTime = getWholeNumber(totalHospitalBeds * 0.35 - impactSevCBRT);
+  const sHospitalBedByReqTime = getWholeNumber(totalHospitalBeds * 0.35 - sevSevCBRT);
   const impactCasesForICUBRT = Math.floor(impactSevCBRT * 0.05);
   const severeCasesForICUBRT = Math.floor(sevSevCBRT * 0.05);
+  const impactCFVBRT = Math.floor(impactSevCBRT * 0.02);
+  const severeCFVBRT = Math.floor(sevSevCBRT * 0.05);
   return {
     data: { data },
     impact: {
@@ -37,14 +45,16 @@ const covid19ImpactEstimator = (data = {}) => {
       infectionsByRequestedTime: impIBRT,
       severeCasesByRequestedTime: impactSevCBRT,
       hospitalBedsByRequestedTime: iHospitalBedByReqTime,
-      casesForICUByrequestedTime: impactCasesForICUBRT
+      casesForICUByrequestedTime: impactCasesForICUBRT,
+      casesForVentilatorsByRequestedTime: impactCFVBRT
     },
     severeImpact: {
       currentlyInfected: severeCI,
       infectionsByRequestedTime: sevIBRT,
       severeCasesByRequestedTime: sevSevCBRT,
       hospitalBedsByRequestedTime: sHospitalBedByReqTime,
-      casesForICUByrequestedTime: severeCasesForICUBRT
+      casesForICUByrequestedTime: severeCasesForICUBRT,
+      casesForVentilatorsByRequestedTime: severeCFVBRT
     }
   };
 };
