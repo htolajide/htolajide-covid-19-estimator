@@ -48,7 +48,7 @@ const covid19ImpactEstimator = (data = {}) => {
       infectionsByRequestedTime: impIBRT,
       severeCasesByRequestedTime: impactSevCBRT,
       hospitalBedsByRequestedTime: iHospitalBedByReqTime,
-      casesForICUByrequestedTime: impactCasesForICUBRT,
+      casesForICUByRequestedTime: impactCasesForICUBRT,
       casesForVentilatorsByRequestedTime: impactCFVBRT,
       dollarsInFlight: impactDIF
     },
@@ -57,7 +57,7 @@ const covid19ImpactEstimator = (data = {}) => {
       infectionsByRequestedTime: sevIBRT,
       severeCasesByRequestedTime: sevSevCBRT,
       hospitalBedsByRequestedTime: sHospitalBedByReqTime,
-      casesForICUByrequestedTime: severeCasesForICUBRT,
+      casesForICUByRequestedTime: severeCasesForICUBRT,
       casesForVentilatorsByRequestedTime: severeCFVBRT,
       dollarsInFlight: severeDIF
     }
