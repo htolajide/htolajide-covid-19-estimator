@@ -20,26 +20,26 @@ const covid19ImpactEstimator = (data = {}) => {
     timeToElapse,
     totalHospitalBeds
   } = data;
-  const impactCurrentlyInfected = getImpactCurrentlyInfected(reportedCases);
-  const severeImpactCurrentlyInfected = getSevereImpactCurrentlyInfected(reportedCases);
-  const impactInfecByReqTime = infectionFactor(periodType, timeToElapse) * impactCurrentlyInfected;
-  const sevInfecByReq = infectionFactor(periodType, timeToElapse) * severeImpactCurrentlyInfected;
-  const impactSevCasesByRequestedTime = impactInfecByReqTime * Math.floor(15 / 100);
-  const sevSevCasesByReqTime = sevInfecByReq * Math.floor(15 / 100);
-  const iHospitalBedByReqTime = ((totalHospitalBeds * (35 / 100)) - impactSevCasesByRequestedTime);
-  const sHospitalBedByReqTime = ((totalHospitalBeds * Math.floor(35 / 100)) - sevSevCasesByReqTime);
+  const impactCI = getImpactCurrentlyInfected(reportedCases);
+  const severeCI = getSevereImpactCurrentlyInfected(reportedCases);
+  const impIBR = infectionFactor(periodType, timeToElapse) * impactCI;
+  const sevIBR = infectionFactor(periodType, timeToElapse) * severeCI;
+  const impactSevCBRT = infectionFactor(periodType, timeToElapse) * impactCI * Math.floor(15 / 100);
+  const sevSevCBRT = infectionFactor(periodType, timeToElapse) * severeCI * Math.floor(15 / 100);
+  const iHospitalBedByReqTime = ((totalHospitalBeds * (35 / 100)) - impactSevCBRT);
+  const sHospitalBedByReqTime = ((totalHospitalBeds * Math.floor(35 / 100)) - sevSevCBRT);
   return {
     data: { data },
     impact: {
-      currentlyInfected: impactCurrentlyInfected,
-      infectionsByRequestedTime: impactInfecByReqTime,
-      severeCasesByRequestedTime: impactSevCasesByRequestedTime,
+      currentlyInfected: impactCI,
+      infectionsByRequestedTime: impIBR,
+      severeCasesByRequestedTime: impactSevCBRT,
       hospitalBedsByRequestTime: iHospitalBedByReqTime
     },
     severeImpact: {
-      currentlyInfected: severeImpactCurrentlyInfected,
-      infectionsByRequestedTime: sevInfecByReq,
-      severeCasesByRequestedTime: sevSevCasesByReqTime,
+      currentlyInfected: severeCI,
+      infectionsByRequestedTime: sevIBR,
+      severeCasesByRequestedTime: sevSevCBRT,
       hospitalBedsByRequestTime: sHospitalBedByReqTime
     }
   };
