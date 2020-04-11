@@ -34,13 +34,13 @@ const covid19ImpactEstimator = (data = {}) => {
       currentlyInfected: impactCI,
       infectionsByRequestedTime: impIBR,
       severeCasesByRequestedTime: impactSevCBRT,
-      hospitalBedsByRequestTime: iHospitalBedByReqTime
+      hospitalBedsByRequestedTime: iHospitalBedByReqTime
     },
     severeImpact: {
       currentlyInfected: severeCI,
       infectionsByRequestedTime: sevIBR,
       severeCasesByRequestedTime: sevSevCBRT,
-      hospitalBedsByRequestTime: sHospitalBedByReqTime
+      hospitalBedsByRequestedTime: sHospitalBedByReqTime
     }
   };
 };
