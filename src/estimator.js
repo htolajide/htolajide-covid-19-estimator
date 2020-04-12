@@ -49,10 +49,10 @@ const covid19ImpactEstimator = (data = {}) => {
   const sevSevCBRT = Math.floor(sevIBRT * 0.15);
   const iHospitalBedByReqTime = getWholeNumber(totalHospitalBeds * 0.35 - impactSevCBRT);
   const sHospitalBedByReqTime = getWholeNumber(totalHospitalBeds * 0.35 - sevSevCBRT);
-  const impactCasesForICUBRT = Math.floor(impactSevCBRT * 0.05);
-  const severeCasesForICUBRT = Math.floor(sevSevCBRT * 0.05);
-  const impactCFVBRT = Math.floor(impactSevCBRT * 0.02);
-  const severeCFVBRT = Math.floor(sevSevCBRT * 0.05);
+  const impactCasesForICUBRT = Math.floor(impIBRT * 0.05);
+  const severeCasesForICUBRT = Math.floor(sevIBRT * 0.05);
+  const impactCFVBRT = Math.floor(impIBRT * 0.02);
+  const severeCFVBRT = Math.floor(sevIBRT * 0.02);
   const days = getDays(periodType, timeToElapse);
   const dIF = (avgDailyIncomePopulation * avgDailyIncomeInUSD);
   const impactDIF = (impIBRT * dIF) / days;
