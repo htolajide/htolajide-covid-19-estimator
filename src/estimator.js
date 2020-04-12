@@ -35,10 +35,11 @@ const getWholeNumber = (number) => {
 
 const covid19ImpactEstimator = (data = {}) => {
   const {
-    region: { avgDailyIcomeInUSD },
+    region: { avgDailyIcomeInUSD, avgDailyIncomePopulation },
     reportedCases,
     periodType,
     timeToElapse,
+    population,
     totalHospitalBeds
   } = data;
   const impactCI = getImpactCurrentlyInfected(reportedCases);
@@ -54,8 +55,9 @@ const covid19ImpactEstimator = (data = {}) => {
   const impactCFVBRT = Math.floor(impactSevCBRT * 0.02);
   const severeCFVBRT = Math.floor(sevSevCBRT * 0.05);
   const days = getDays(periodType, timeToElapse);
-  const impactDIF = Math.floor(impIBRT * avgDailyIcomeInUSD * days);
-  const severeDIF = Math.floor(sevIBRT * avgDailyIcomeInUSD * days);
+  const dIF = avgDailyIncomePopulation * population * avgDailyIcomeInUSD * days;
+  const impactDIF = Math.floor(impIBRT * dIF);
+  const severeDIF = Math.floor(sevIBRT * dIF);
   return {
     data: { data },
     impact: {
