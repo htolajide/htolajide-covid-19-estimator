@@ -15,18 +15,18 @@ const infectionFactor = (periodType, number) => {
   return factor;
 };
 
-const getDays = (periodType, number) => {
-  let days = 0;
-  const periodTypeLower = periodType.toLowerCase();
-  if (periodTypeLower === 'days') {
-    days = number;
-  } else if (periodTypeLower === 'weeks') {
-    days = number * 7;
-  } else if (periodTypeLower === 'months') {
-    days = number * 30;
-  }
-  return days;
-};
+// const getDays = (periodType, number) => {
+//   let days = 0;
+//   const periodTypeLower = periodType.toLowerCase();
+//   if (periodTypeLower === 'days') {
+//     days = number;
+//   } else if (periodTypeLower === 'weeks') {
+//     days = number * 7;
+//   } else if (periodTypeLower === 'months') {
+//     days = number * 30;
+//   }
+//   return days;
+// };
 
 const getWholeNumber = (number) => {
   if (number > 0) return Math.floor(number);
@@ -53,8 +53,8 @@ const covid19ImpactEstimator = (data = {}) => {
   const severeCasesForICUBRT = Math.floor(sevSevCBRT * 0.05);
   const impactCFVBRT = Math.floor(impactSevCBRT * 0.02);
   const severeCFVBRT = Math.floor(sevSevCBRT * 0.05);
-  const days = getDays(periodType, timeToElapse);
-  const dIF = avgDailyIncomePopulation * avgDailyIncomeInUSD * days;
+  // const days = getDays(periodType, timeToElapse);
+  const dIF = avgDailyIncomePopulation * avgDailyIncomeInUSD * timeToElapse;
   const impactDIF = Math.floor(impIBRT * dIF);
   const severeDIF = Math.floor(sevIBRT * dIF);
 
