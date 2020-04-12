@@ -55,8 +55,8 @@ const covid19ImpactEstimator = (data = {}) => {
   const severeCFVBRT = Math.floor(sevIBRT * 0.02);
   const days = getDays(periodType, timeToElapse);
   const dIF = (avgDailyIncomePopulation * avgDailyIncomeInUSD);
-  const impactDIF = (impIBRT * dIF) / days;
-  const severeDIF = (sevIBRT * dIF) / days;
+  const impactDIF = Math.floor((impIBRT * dIF) / days);
+  const severeDIF = Math.floor((sevIBRT * dIF) / days);
 
   return {
     data: { data },
