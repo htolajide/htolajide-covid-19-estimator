@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="this app is used for covid-19-estimator">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link rel="icon" href="favicon.ico">
+    <title>Covid-19-Estimatoe</title>
+	<style>
+		.data{
+			border: 2px solid #eee;
+			padding: 0;
+			border-radius: 5px;
+		}
+		.header{
+			background-color: #232323;
+			width: 100%;
+			margin: 0;
+			color: #ffffff;
+			text-align: center;
+			border-radius: 5px;
+		}
+		.row{
+			margin-top: 70px;
+		}
+		.content{
+		 padding:15px;
+		}
+		button{
+		 float:right;
+		}
+	</style>
+  </head>
+  <body>
+	<!-- As a heading -->
+	<nav class="navbar navbar-light bg-secondary">
+		<span class="navbar-brand mb-0 h1">Covid-19 Estimator</span>
+		<form class="form-inline">
+		<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+		<button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
+  </form>
+	</nav>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="data col-md-8">
+				<h3 class="header">Fill Data</h3>
+				<div class="content">
+					<form>
+						<div class="form-group mb-3">
+							<label for="formGroupExampleInput">Region Name</label>
+							<input type="text" class="form-control" id="formGroupExampleInput" data-region-name="">
+						</div>
+						<div class="form-group mb-3">
+							<label for="formGroupExampleInput2">Average Age</label>
+							<input type="text" class="form-control" id="formGroupExampleInput2" data-avg-age="">
+						</div>
+						<div class="form-group mb-3">
+							<label for="formGroupExampleInput">Average Daily Income</label>
+							<input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" data-avg-income="">
+						</div>
+						<div class="form-group mb-3">
+							<label for="formGroupExampleInput2">Average Income Population</label>
+							<input type="text" class="form-control" id="formGroupExampleInput2" data-avg-income-pop="">
+						</div>
+						<div class="form-group mb-3">
+							<label for="formGroupExampleInput">Population</label>
+							<input type="text" class="form-control" id="formGroupExampleInput" data-population="">
+						</div>
+						<div class="form-group mb-3">
+							<label for="formGroupExampleInput2">Time to Elapse</label>
+							<input type="text" class="form-control" id="formGroupExampleInput2" data-time-to-elapse="">
+						</div>
+						<div class="form-group mb-3">
+							<label for="formGroupExampleInput">Reported Cases</label>
+							<input type="text" class="form-control" id="formGroupExampleInput" data-reported-cases="">
+						</div>
+						<div class="form-group mb-3">
+							<label for="formGroupExampleInput2">Total Hospital Beds</label>
+							<input type="text" class="form-control" id="formGroupExampleInput2" data-total-hospital-beds="">
+						</div>
+						<div class="form-group mb-3">
+							<label for="inputState">State</label>
+							<select id="inputState" class="form-control" data-period-type="">
+								<option selected>Choose...</option>
+								<option>days</option>
+								<option>weeks</option>
+								<option>months</option>
+							</select>
+						</div>
+							<button type="submit" class="btn btn-primary" data-go-estimate>Submit</button>
+					</form>
+				</div>
+			</div>
+			<div class="col-md-2">
+	
+			</div>
+		</div>
+	</div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>
