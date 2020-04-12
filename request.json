@@ -1,0 +1,3 @@
+GET /hello/hammed 200 9 ms
+GET /hello/taofeek 200 0 ms
+GET /hello/samwell 200 0 ms
