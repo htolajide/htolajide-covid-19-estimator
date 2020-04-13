@@ -7,10 +7,14 @@
   "scripts": {
     "build": "babel  src --out-dir dist --copy-files",
     "clean": "rm -rf dist && mkdir dist",
-    "start": "node app.js",
+    "start": "node start.js",
     "heroku-postbuild": "npm run clean && npm run build --prod",
     "lint": "eslint app.js ./src/",
-    "start-mon": "nodemon app.js"
+    "start-mon": "nodemon start.js"
+  },
+  "engines": {
+    "node": "12.13.1",
+    "npm": "6.13.7"
   },
   "dependencies": {
     "@babel/polyfill": "^7.4.4",
@@ -28,6 +32,7 @@
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
+    "@babel/register": "^7.9.0",
     "babel-jest": "^25.2.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.0.0",
