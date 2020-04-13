@@ -9,7 +9,7 @@
     "clean": "rm -rf dist && mkdir dist",
     "start": "node app.js",
     "heroku-postbuild": "npm run clean && npm run build --prod",
-    "lint": "eslint ./src/",
+    "lint": "eslint app.js ./src/",
     "start-mon": "nodemon app.js"
   },
   "dependencies": {
@@ -20,6 +20,7 @@
     "nodemon": "^2.0.3",
     "object-to-xml": "^2.0.0",
     "on-covid-19": "^0.1.3",
+    "simple-node-logger": "^18.12.24",
     "sucrase": "^3.13.0"
   },
   "devDependencies": {
