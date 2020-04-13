@@ -59,7 +59,7 @@ const covid19ImpactEstimator = (data = {}) => {
   const severeDIF = Math.floor((sevIBRT * dIF) / days);
 
   return {
-    data: data,
+    data: {data},
     impact: {
       currentlyInfected: impactCI,
       infectionsByRequestedTime: impIBRT,
