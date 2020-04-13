@@ -5,21 +5,34 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "lint": "eslint ./src/"
+    "build": "babel  src --out-dir dist --copy-files",
+    "clean": "rm -rf dist && mkdir dist",
+    "start": "node app.js",
+    "heroku-postbuild": "npm run clean && npm run build --prod",
+    "lint": "eslint ./src/",
+    "start-mon": "nodemon app.js"
   },
   "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "jsend": "^1.1.0",
     "morgan": "^1.10.0",
-    "on-covid-19": "^0.1.3"
+    "nodemon": "^2.0.3",
+    "object-to-xml": "^2.0.0",
+    "on-covid-19": "^0.1.3",
+    "sucrase": "^3.13.0",
+    "xml": "^1.0.1"
   },
   "devDependencies": {
+    "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",
-    "@babel/preset-env": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
     "babel-jest": "^25.2.0",
-    "jest": "^25.2.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-plugin-import": "^2.20.1"
+    "eslint-plugin-import": "^2.20.1",
+    "jest": "^25.2.0"
   },
   "browserslist": [
     "last 1 Chrome versions"
