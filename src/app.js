@@ -1,6 +1,5 @@
 'use-strict';
 
-import '@babel/polyfill';
 import express from 'express';
 import morgan from 'morgan';
 import fs from 'fs';
@@ -8,7 +7,7 @@ import path from 'path';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import objXml from 'object-to-xml';
-import covid19ImpactEstimator from './src/estimator';
+import covid19ImpactEstimator from './estimator';
 
 const logger = require('simple-node-logger').createSimpleLogger();
 
