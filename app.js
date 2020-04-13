@@ -1,5 +1,4 @@
 'use-strict';
-import '@babel/polyfill';
 import express from 'express';
 import morgan from 'morgan';
 import fs from 'fs';
@@ -71,3 +70,5 @@ app.get('/api/v1/on-covid-19/logs', (req, res) => {
 
 app.get('*', (req, res) => { res.end('Covid-19 Estmator!!!'); });
 app.listen(port, () => logger.info(`Covid-19 Estimator ready at ${port}`));
+
+module.exports = app;
