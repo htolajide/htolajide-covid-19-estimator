@@ -7,7 +7,7 @@
   "scripts": {
     "build": "babel  src --out-dir dist --copy-files",
     "clean": "rm -rf dist && mkdir dist",
-    "start": "node scr/start.js",
+    "start": "node start.js",
     "heroku-postbuild": "npm run clean && npm run build --prod",
     "lint": "eslint ./src/",
     "start-mon": "nodemon src/start.js"
