@@ -1,37 +1,4 @@
-const getImpactCurrentlyInfected = (inputData) => inputData * 10;
-
-const getSevereImpactCurrentlyInfected = (inputData) => inputData * 50;
-
-const infectionFactor = (periodType, number) => {
-  let factor = 0;
-  const periodTypeLower = periodType.toLowerCase();
-  if (periodTypeLower === 'days') {
-    factor = 2 ** Math.floor(number / 3);
-  } else if (periodTypeLower === 'weeks') {
-    factor = 2 ** Math.floor((number * 7) / 3);
-  } else if (periodTypeLower === 'months') {
-    factor = 2 ** Math.floor((number * 30) / 3);
-  }
-  return factor;
-};
-
-const getDays = (periodType, number) => {
-  let days = 0;
-  const periodTypeLower = periodType.toLowerCase();
-  if (periodTypeLower === 'days') {
-    days = number;
-  } else if (periodTypeLower === 'weeks') {
-    days = number * 7;
-  } else if (periodTypeLower === 'months') {
-    days = number * 30;
-  }
-  return days;
-};
-
-const getWholeNumber = (number) => {
-  if (number > 0) return Math.floor(number);
-  return Math.ceil(number);
-};
+import helper from './helper';
 
 const covid19ImpactEstimator = (data = {}) => {
   const {
@@ -41,22 +8,23 @@ const covid19ImpactEstimator = (data = {}) => {
     timeToElapse,
     totalHospitalBeds
   } = data;
-  const impactCI = getImpactCurrentlyInfected(reportedCases);
-  const severeCI = getSevereImpactCurrentlyInfected(reportedCases);
-  const impIBRT = infectionFactor(periodType, timeToElapse) * impactCI;
-  const sevIBRT = infectionFactor(periodType, timeToElapse) * severeCI;
-  const impactSevCBRT = Math.floor(impIBRT * 0.15);
-  const sevSevCBRT = Math.floor(sevIBRT * 0.15);
-  const iHospitalBedByReqTime = getWholeNumber(totalHospitalBeds * 0.35 - impactSevCBRT);
-  const sHospitalBedByReqTime = getWholeNumber(totalHospitalBeds * 0.35 - sevSevCBRT);
-  const impactCasesForICUBRT = Math.floor(impIBRT * 0.05);
-  const severeCasesForICUBRT = Math.floor(sevIBRT * 0.05);
-  const impactCFVBRT = Math.floor(impIBRT * 0.02);
-  const severeCFVBRT = Math.floor(sevIBRT * 0.02);
-  const days = getDays(periodType, timeToElapse);
+
+  const impactCI = helper.getImpactCurrentlyInfected(reportedCases);
+  const severeCI = helper.getSevereImpactCurrentlyInfected(reportedCases);
+  const impIBRT = helper.infectionFactor(periodType, timeToElapse) * impactCI;
+  const sevIBRT = helper.infectionFactor(periodType, timeToElapse) * severeCI;
+  const impactSevCBRT = helper.getWholeNumber(impIBRT * 0.15);
+  const sevSevCBRT = helper.getWholeNumber(sevIBRT * 0.15);
+  const iHospitalBedByReqTime = helper.getWholeNumber(totalHospitalBeds * 0.35 - impactSevCBRT);
+  const sHospitalBedByReqTime = helper.getWholeNumber(totalHospitalBeds * 0.35 - sevSevCBRT);
+  const impactCasesForICUBRT = helper.getWholeNumber(impIBRT * 0.05);
+  const severeCasesForICUBRT = helper.getWholeNumber(sevIBRT * 0.05);
+  const impactCFVBRT = helper.getWholeNumber(impIBRT * 0.02);
+  const severeCFVBRT = helper.getWholeNumber(sevIBRT * 0.02);
+  const days = helper.getDays(periodType, timeToElapse);
   const dIF = (avgDailyIncomePopulation * avgDailyIncomeInUSD);
-  const impactDIF = Math.floor((impIBRT * dIF) / days);
-  const severeDIF = Math.floor((sevIBRT * dIF) / days);
+  const impactDIF = helper.getWholeNumber((impIBRT * dIF) / days);
+  const severeDIF = helper.getWholeNumber((sevIBRT * dIF) / days);
 
   return {
     data: { data },
