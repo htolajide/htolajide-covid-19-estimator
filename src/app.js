@@ -2,7 +2,7 @@
 
 import '@babel/polyfill';
 import express from 'express';
-import morgan from 'morgan';
+import morgan, { token } from 'morgan';
 import fs from 'fs';
 import path from 'path';
 import bodyParser from 'body-parser';
@@ -21,8 +21,19 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan('dev'));
+app.use(morgan((tokens, req, res) => {
+  const realtime = tokens['response-time'](req, res);
+  const time = Math.floor(realtime).toString();
+  time.length === 1 ? '0' + time : time;
+  return [
+    tokens.method(req, res),
+    tokens.url(req, res),
+    tokens.status(req, res),
+    time + 'ms'
+  ].join('\t\t')
+}, { stream: accessLogStream }))
 // app.use(morgan(':method :url :status :total-time[digits]', { stream: accessLogStream }))
-app.use(morgan(':method\t\t:url\t\t:status\t\t:total-time[0]ms\n', { stream: accessLogStream }));
+// app.use(morgan(':method\t\t:url\t\t:status\t\t:response-time[0]ms', { stream: accessLogStream }));
 // app.use(morgan(':method :url :status :response-time[digits] ms', { stream: requestLogStream }))
 app.post('/api/v1/on-covid-19', (req, res) => {
 // res.setHeader('content-type', 'text/xml')
@@ -61,7 +72,7 @@ app.get('/api/v1/on-covid-19/logs', (req, res) => {
   fs.readFile(path.join(__dirname, 'access.txt'), (err, data) => {
     if (err) res.send('Error reading file');
     else if (data === undefined) res.send('No data');
-    else { res.send(data.toString()); }
+    else { res.status(200).send(data.toString()); }
   });
 });
 
