@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "repository": "git@github.com:BuildforSDG-Cohort1-Assessment/covid-19-estimator-js.git",
   "license": "MIT",
+  "main": "app.js",
   "private": false,
   "scripts": {
     "build": "babel  src --out-dir dist --copy-files",
     "clean": "rm -rf dist && mkdir dist",
-    "start": "node app.js",
+    "start": "node dist/app.js",
     "heroku-postbuild": "npm run clean && npm run build --prod",
     "lint": "eslint ./src/",
     "start-mon": "nodemon src/app.js"
