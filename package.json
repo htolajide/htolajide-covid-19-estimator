@@ -13,10 +13,6 @@
     "lint": "eslint ./src/",
     "start-mon": "nodemon src/app.js"
   },
-  "engines": {
-    "node": "12.13.1",
-    "npm": "6.13.7"
-  },
   "dependencies": {
     "@babel/polyfill": "^7.4.4",
     "body-parser": "^1.19.0",
