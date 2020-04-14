@@ -1,2 +1,0 @@
-GET   /api/v1/on-covid-19/logs    200   11 ms
-GET   /api/v1/on-covid-19/logs    200   27 ms

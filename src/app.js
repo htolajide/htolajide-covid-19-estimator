@@ -22,7 +22,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 // app.use(morgan(':method :url :status :total-time[digits]', { stream: accessLogStream }))
-app.use(morgan(':method   :url    :status   :total-time[digits] ms', { stream: accessLogStream }));
+app.use(morgan(':method   :url    :status   :total-time[0] ms', { stream: accessLogStream }));
 // app.use(morgan(':method :url :status :response-time[digits] ms', { stream: requestLogStream }))
 app.post('/api/v1/on-covid-19', (req, res) => {
 // res.setHeader('content-type', 'text/xml')
@@ -57,7 +57,7 @@ app.post('/api/v1/on-covid-19/xml', (req, res) => {
 });
 
 app.get('/api/v1/on-covid-19/logs', (req, res) => {
-  res.set('Content-Type', 'text/plain');
+  res.setHeader('Content-Type', 'text/plain', 'charset=utf-8');
   fs.readFile(path.join(__dirname, 'access.txt'), (err, data) => {
     if (err) res.send('Error reading file');
     else if (data === undefined) res.send('No data');
