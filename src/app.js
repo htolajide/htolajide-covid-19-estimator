@@ -26,7 +26,7 @@ app.use(morgan((tokens, req, res) => {
   let time = Math.floor(realtime).toString();
   let method = tokens.method(req, res);
   let url = tokens.url(req, res);
-  let status = tokens.status(req, res);
+  const status = tokens.status(req, res);
   if (time.length === 1) time = `0${time}`;
   if (method.length < 4) method = `${method} `;
   if (url.includes('xml')) url = `${url} `;
