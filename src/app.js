@@ -9,6 +9,7 @@ import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import objXml from 'object-to-xml';
 import covid19ImpactEstimator from './estimator';
+
 const logger = require('simple-node-logger').createSimpleLogger();
 
 dotenv.config();
@@ -26,9 +27,9 @@ app.use(morgan((tokens, req, res) => {
   let method = tokens.method(req, res);
   let url = tokens.url(req, res);
   let status = tokens.status(req, res);
-  if (time.length === 1)time = `0${time}`;
-  if (method.length < 4) method = `${method} `
-  if (url.includes('xml')) url = `${url} `
+  if (time.length === 1) time = `0${time}`;
+  if (method.length < 4) method = `${method} `;
+  if (url.includes('xml')) url = `${url} `;
   if (url.length < 20) {
     status = `    ${status}`;
     return `    ${method}   ${url}    ${status}   ${time} ms`;
