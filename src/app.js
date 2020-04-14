@@ -30,7 +30,7 @@ app.use(morgan((tokens, req, res) => {
     tokens.url(req, res),
     tokens.status(req, res),
     `${time}ms`
-  ].join('\t\t');
+  ].join('\t');
 }, { stream: accessLogStream }));
 // app.use(morgan(':method :url :status :total-time[digits]', { stream: accessLogStream }))
 // app.use(morgan(':method :url :status :response-time[0]ms', { stream: accessLogStream }));
