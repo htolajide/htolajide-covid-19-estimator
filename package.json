@@ -7,10 +7,10 @@
   "scripts": {
     "build": "babel  src --out-dir dist --copy-files",
     "clean": "rm -rf dist && mkdir dist",
-    "start": "node start.js",
+    "start": "node app.js",
     "heroku-postbuild": "npm run clean && npm run build --prod",
     "lint": "eslint ./src/",
-    "start-mon": "nodemon src/start.js"
+    "start-mon": "nodemon src/app.js"
   },
   "engines": {
     "node": "12.13.1",
