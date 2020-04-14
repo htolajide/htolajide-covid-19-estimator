@@ -16,7 +16,7 @@ dotenv.config();
 // store the port number
 const port = parseInt(process.env.PORT, 10) || 4500;
 // create a write stream (in append mode)
-const accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' });
+const accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.txt'), { flags: 'a' });
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -63,7 +63,7 @@ app.post('/api/v1/on-covid-19/xml', (req, res) => {
 });
 
 app.get('/api/v1/on-covid-19/logs', (req, res) => {
-  fs.readFile(path.join(__dirname, 'access.log'), 'utf8', (err, data) => {
+  fs.readFile(path.join(__dirname, 'access.txt'), 'utf8', (err, data) => {
     if (err) res.end('Error reading file');
     else if (data === undefined) res.end('No data');
     else { res.end(data); }

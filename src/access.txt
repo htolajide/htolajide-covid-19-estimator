@@ -1,0 +1,2 @@
+POST     /api/v1/on-covid-19/    200     2ms
+GET     /api/v1/on-covid-19/logs    200     3ms
