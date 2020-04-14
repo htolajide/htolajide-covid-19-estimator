@@ -22,7 +22,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 // app.use(morgan(':method :url :status :total-time[digits]', { stream: accessLogStream }))
-app.use(morgan(':method     :url    :status     :response-time[digits]ms', { stream: accessLogStream }));
+app.use(morgan(':method     :url    :status     :total-time[digits]ms', { stream: accessLogStream }));
 // app.use(morgan(':method :url :status :response-time[digits] ms', { stream: requestLogStream }))
 app.post('/api/v1/on-covid-19', (req, res) => {
 // res.setHeader('content-type', 'text/xml')
