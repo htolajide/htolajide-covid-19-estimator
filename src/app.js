@@ -31,10 +31,10 @@ app.use(morgan((tokens, req, res) => {
   if (method.length < 4) method = `${method} `;
   if (url.includes('xml')) url = `${url} `;
   if (url.length < 20) {
-    status = `    ${status}`;
-    return `    ${method}   ${url}    ${status}   ${time} ms`;
+    url = `${url}   `;
+    return `${method}   ${url}   ${status}   ${time}ms`;
   }
-  return `    ${method}   ${url}    ${status}   ${time} ms`;
+  return `${method}   ${url}    ${status}   ${time}ms`;
 }, { stream: accessLogStream }));
 // app.use(morgan(':method :url :status :total-time[digits]', { stream: accessLogStream }))
 // app.use(morgan(':method :url :status :response-time[0]ms', { stream: accessLogStream }));
