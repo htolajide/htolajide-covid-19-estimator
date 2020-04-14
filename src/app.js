@@ -58,7 +58,7 @@ app.post('/api/v1/on-covid-19/xml', (req, res) => {
 
 app.get('/api/v1/on-covid-19/logs', (req, res) => {
   res.set('Content-Type', 'text/plain');
-  fs.readFile(path.join(__dirname, 'access.txt'), 'utf8', (err, data) => {
+  fs.readFile(path.join(__dirname, 'access.txt'), (err, data) => {
     if (err) res.send('Error reading file');
     else if (data === undefined) res.send('No data');
     else { res.send(data); }
