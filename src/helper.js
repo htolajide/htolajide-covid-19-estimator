@@ -30,7 +30,7 @@ export default {
   },
 
   getWholeNumber: (number) => {
-    if (number > 0) return Math.floor(number);
-    return Math.ceil(number);
+    if (number < 0) return Math.ceil(number);
+    return Math.floor(number);
   }
 };
