@@ -27,7 +27,7 @@ const covid19ImpactEstimator = (data = {}) => {
   const severeDIF = helper.getWholeNumber((sevIBRT * dIF) / days);
 
   return {
-    data: { data },
+    data,
     impact: {
       currentlyInfected: impactCI,
       infectionsByRequestedTime: impIBRT,
